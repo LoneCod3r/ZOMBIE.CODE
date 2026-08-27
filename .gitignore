@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+dev-dist
+*.local
+.DS_Store
+*.tsbuildinfo
+.claude/
+
+# .NET (csharp-practice/)
+bin/
+obj/
