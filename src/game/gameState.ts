@@ -11,6 +11,7 @@ assertQuestionsValid(allQuestions);
 
 const TRANSITION_INTERVAL = 5;
 const CHARACTER_STAGE_2_PROGRESS = 0.5;
+const CHARACTER_STAGE_3_PROGRESS = 0.8;
 const CHARACTER_STAGE_3_ACCURACY = 0.8;
 const MAX_PLAYER_NAME_LENGTH = 20;
 export const DEFAULT_PLAYER_NAME = "ANONYMOUS DEV";
@@ -40,6 +41,11 @@ function emptyAnswersByLanguage(): Record<Language, { correct: number; total: nu
 // The character portrait only ever advances forward (never reverts), mirroring
 // the one-way "transformation" narrative: once you've slipped further toward
 // zombie, a lucky streak of correct answers doesn't undo it.
+//
+// Stage 2 and stage 3 are gated by separate progress checkpoints (50% then
+// 80%) so a high-accuracy run always passes through stage 2 first, rather
+// than jumping straight from 1 to 3 when both conditions happen to be true
+// at the same 50% checkpoint.
 function computeCharacterStage(
   correctAnswers: number,
   answered: number,
@@ -50,8 +56,10 @@ function computeCharacterStage(
   const accuracy = answered > 0 ? correctAnswers / answered : 0;
 
   let candidate: CharacterStage = 1;
-  if (progress >= CHARACTER_STAGE_2_PROGRESS) {
+  if (progress >= CHARACTER_STAGE_3_PROGRESS) {
     candidate = accuracy >= CHARACTER_STAGE_3_ACCURACY ? 3 : 2;
+  } else if (progress >= CHARACTER_STAGE_2_PROGRESS) {
+    candidate = 2;
   }
 
   return Math.max(previousStage, candidate) as CharacterStage;
