@@ -26,10 +26,6 @@ export default function HowToPlay({ onBack, onStart }: HowToPlayProps) {
           <div>ENTER&nbsp;Confirm your selection</div>
           <div>ESC&nbsp;&nbsp;&nbsp;Pause</div>
         </div>
-        <p className="howto-note">
-          No arrow keys — this terminal doesn't do those. Mouse and touch also work: click an answer to lock it in
-          immediately.
-        </p>
       </div>
 
       <div className="menu-buttons">
