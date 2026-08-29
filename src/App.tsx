@@ -4,6 +4,8 @@ import { STORY_TRANSITIONS } from "./story/transitions";
 import CRTOverlay from "./components/CRTOverlay";
 import MainMenu from "./components/MainMenu";
 import HowToPlay from "./components/HowToPlay";
+import AchievementsScreen from "./components/AchievementsScreen";
+import HighScoresScreen from "./components/HighScoresScreen";
 import CharacterSelect from "./components/CharacterSelect";
 import GameScreen from "./components/GameScreen";
 import StoryTransition from "./components/StoryTransition";
@@ -21,11 +23,22 @@ export default function App() {
     switch (state.gameStatus) {
       case "menu":
         return (
-          <MainMenu onStart={actions.goToCharacterSelect} onHowToPlay={actions.goToHowTo} highScores={highScores} />
+          <MainMenu
+            onStart={actions.goToCharacterSelect}
+            onHowToPlay={actions.goToHowTo}
+            onAchievements={actions.goToAchievements}
+            onHighScores={actions.goToHighScores}
+          />
         );
 
       case "howto":
         return <HowToPlay onBack={actions.goToMenu} onStart={actions.goToCharacterSelect} />;
+
+      case "achievements":
+        return <AchievementsScreen onBack={actions.goToMenu} highScores={highScores} />;
+
+      case "highscores":
+        return <HighScoresScreen onBack={actions.goToMenu} highScores={highScores} />;
 
       case "characterSelect":
         return <CharacterSelect onSelect={actions.startGame} />;

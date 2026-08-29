@@ -22,6 +22,8 @@ export interface Question {
 export type GameStatus =
   | "menu"
   | "howto"
+  | "achievements"
+  | "highscores"
   | "characterSelect"
   | "playing"
   | "transition"

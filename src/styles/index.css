@@ -176,109 +176,143 @@ button {
   text-shadow: 0 0 6px rgba(183, 213, 138, 0.4);
 }
 
-.menu-highscore-panel {
-  border: 1px solid var(--c-dirty-gray);
-  padding: 0.75rem 1.25rem;
-  color: var(--c-off-white);
-  font-size: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  min-width: 280px;
+/* ── High scores screen ──────────────────────────────── */
+.highscores-frame {
+  max-width: 480px;
+  min-width: 320px;
 }
 
-.menu-highscore-entry {
+.highscores-frame .terminal-titlebar {
+  justify-content: center;
+}
+
+.highscores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--c-off-white);
+  font-size: 0.85rem;
+}
+
+.highscores-empty {
+  color: var(--c-off-white);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.highscore-entry {
   display: flex;
   gap: 0.75rem;
   align-items: baseline;
   text-align: left;
-}
-
-.menu-highscore-entry:not(:last-child) {
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--c-dirty-gray);
 }
 
-.menu-highscore-rank-badge {
+.highscore-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.highscore-rank-badge {
   color: var(--c-terminal-green);
   font-size: 0.9rem;
   flex-shrink: 0;
 }
 
-.menu-highscore-details {
+.highscore-details {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
 }
 
-.menu-highscore-date {
+.highscore-name {
+  color: var(--c-terminal-green);
+}
+
+.highscore-date {
   color: var(--c-off-white);
   font-size: 0.7rem;
   opacity: 0.85;
 }
 
-.menu-achievements-panel {
-  border: 1px solid var(--c-dirty-gray);
-  padding: 0.75rem 1.25rem;
-  color: var(--c-off-white);
-  font-size: 0.8rem;
-  min-width: 320px;
-  max-width: 420px;
+/* ── Achievements screen ─────────────────────────────── */
+.achievements-frame {
+  max-width: 520px;
 }
 
-.menu-achievements-header {
+.achievements-frame .terminal-titlebar {
+  justify-content: center;
+}
+
+.achievements-header {
   color: var(--c-terminal-green);
   letter-spacing: 0.08em;
   text-align: center;
   margin-bottom: 0.6rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
-.menu-achievements-list {
+.achievements-list {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  max-height: 260px;
-  overflow-y: auto;
+  gap: 0.3rem;
   text-align: left;
 }
 
-.menu-achievement-row {
+.achievements-empty {
+  color: var(--c-off-white);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.achievement-row {
   display: flex;
   gap: 0.6rem;
-  align-items: baseline;
+  align-items: center;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--c-dirty-gray);
 }
 
-.menu-achievement-mark {
+.achievement-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.achievement-mark {
   color: var(--c-dirty-gray);
   flex-shrink: 0;
+  font-size: 0.85rem;
 }
 
-.menu-achievement-row.unlocked .menu-achievement-mark {
+.achievement-row.unlocked .achievement-mark {
   color: var(--c-crt-green);
 }
 
-.menu-achievement-text {
+.achievement-text {
   display: flex;
   flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
-.menu-achievement-title {
+.achievement-title {
   letter-spacing: 0.05em;
+  font-size: 0.8rem;
 }
 
-.menu-achievement-row.locked .menu-achievement-title {
+.achievement-row.locked .achievement-title {
   color: var(--c-dirty-gray);
 }
 
-.menu-achievement-row.unlocked .menu-achievement-title {
+.achievement-row.unlocked .achievement-title {
   color: var(--c-terminal-green);
 }
 
-.menu-achievement-desc {
-  font-size: 0.7rem;
+.achievement-desc {
+  font-size: 0.75rem;
   color: var(--c-off-white);
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 .menu-credit {
@@ -933,22 +967,6 @@ button {
 }
 
 /* ── Results screen ─────────────────────────────────── */
-.results-portrait {
-  width: 180px;
-  aspect-ratio: 5 / 4;
-  border: 2px solid var(--c-warning-red);
-  box-shadow: 0 0 24px rgba(143, 45, 36, 0.4);
-  overflow: hidden;
-}
-
-.results-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
-
 .results-frame {
   border: 2px solid var(--c-crt-green);
   padding: 1.5rem 2rem;

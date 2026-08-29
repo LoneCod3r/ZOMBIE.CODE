@@ -90,6 +90,8 @@ function createInitialState(): GameState {
 
 export type GameAction =
   | { type: "GO_TO_HOWTO" }
+  | { type: "GO_TO_ACHIEVEMENTS" }
+  | { type: "GO_TO_HIGHSCORES" }
   | { type: "GO_TO_MENU" }
   | { type: "GO_TO_CHARACTER_SELECT" }
   | { type: "START_GAME"; gender: Gender; playerName: string }
@@ -121,6 +123,12 @@ function reducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
     case "GO_TO_HOWTO":
       return { ...state, gameStatus: "howto" };
+
+    case "GO_TO_ACHIEVEMENTS":
+      return { ...state, gameStatus: "achievements" };
+
+    case "GO_TO_HIGHSCORES":
+      return { ...state, gameStatus: "highscores" };
 
     case "GO_TO_MENU":
       return createInitialState();
@@ -274,6 +282,8 @@ export function useGameState() {
 
   const actions = {
     goToHowTo: useCallback(() => dispatch({ type: "GO_TO_HOWTO" }), []),
+    goToAchievements: useCallback(() => dispatch({ type: "GO_TO_ACHIEVEMENTS" }), []),
+    goToHighScores: useCallback(() => dispatch({ type: "GO_TO_HIGHSCORES" }), []),
     goToMenu: useCallback(() => dispatch({ type: "GO_TO_MENU" }), []),
     goToCharacterSelect: useCallback(() => dispatch({ type: "GO_TO_CHARACTER_SELECT" }), []),
     startGame: useCallback(
