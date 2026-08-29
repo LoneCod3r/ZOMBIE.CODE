@@ -41,13 +41,6 @@ export default function ResultsScreen({ state, onPlayAgain, onMainMenu }: Result
 
   return (
     <div className="screen results-screen">
-      <div className="results-portrait">
-        <img
-          src={`/characters/${state.characterGender ?? "male"}-${state.characterStage}.png`}
-          alt={`${state.characterGender === "female" ? "Female" : "Male"} developer, final state`}
-        />
-      </div>
-
       <div className="results-frame">
         <div className="results-title">========================</div>
         <div className="results-title results-title-main">SHIFT COMPLETE</div>
