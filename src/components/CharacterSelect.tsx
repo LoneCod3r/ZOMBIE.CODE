@@ -10,8 +10,10 @@ const MAX_NAME_LENGTH = 20;
 
 export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
   const [name, setName] = useState("");
+  const isNameValid = name.trim().length > 0;
 
   const choose = (gender: Gender) => () => {
+    if (!isNameValid) return;
     playClick();
     onSelect(gender, name);
   };
@@ -30,10 +32,12 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={MAX_NAME_LENGTH}
-          placeholder="ANONYMOUS DEV"
+          placeholder="REQUIRED"
           autoComplete="off"
           spellCheck={false}
+          required
         />
+        {!isNameValid && <span className="character-name-hint">Name required to continue</span>}
       </label>
 
       <div className="character-select-options">
@@ -42,6 +46,8 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
           className="character-option"
           onMouseEnter={playHover}
           onClick={choose("male")}
+          disabled={!isNameValid}
+          aria-disabled={!isNameValid}
         >
           <img src="/characters/male-1.png" alt="Male developer" />
           <span>[ MALE ]</span>
@@ -52,6 +58,8 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
           className="character-option"
           onMouseEnter={playHover}
           onClick={choose("female")}
+          disabled={!isNameValid}
+          aria-disabled={!isNameValid}
         >
           <img src="/characters/female-1.png" alt="Female developer" />
           <span>[ FEMALE ]</span>

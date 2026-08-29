@@ -770,6 +770,12 @@ button {
   outline-offset: 2px;
 }
 
+.character-name-hint {
+  color: var(--c-warning-red);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
 .character-select-options {
   display: flex;
   gap: 2rem;
@@ -806,6 +812,17 @@ button {
   border-color: var(--c-crt-green);
   box-shadow: 0 0 16px rgba(143, 174, 117, 0.4);
   outline: none;
+}
+
+.character-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.character-option:disabled:hover,
+.character-option:disabled:focus-visible {
+  border-color: var(--c-dirty-gray);
+  box-shadow: none;
 }
 
 .zombie-meter {
