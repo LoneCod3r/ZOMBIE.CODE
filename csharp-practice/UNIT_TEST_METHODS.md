@@ -1,6 +1,6 @@
 # Unit Test Methods — Cheat Sheet
 
-Reference for filling in the `// TODO: assert...` lines in `IncidentLogicTests.cs` and `ZombieTests.cs`. All 12 tests can be finished using just the methods below. It shows you **how** to write the assertion — working out the actual expected value from each incident's code snippet is on you.
+Reference for filling in the `// TODO: assert...` lines in `IncidentLogicTests.cs` and `ZombieTests.cs`. All 17 tests can be finished using just the methods below. It shows you **how** to write the assertion — working out the actual expected value from each incident's code snippet is on you.
 
 ---
 
@@ -61,6 +61,11 @@ That's the whole pattern: figure out the expected value by reading the code snip
 | `NewZombie_StartsAtFullHealth` | `var z = new Zombie();` then `Assert.Equal(int, z.Health);` |
 | `Bite_ReducesHealthByTen` | `var z = new Zombie(); z.Bite();` then `Assert.Equal(int, z.Health);` |
 | `Bite_CalledTwice_ReducesHealthByTwenty` | `var z = new Zombie(); z.Bite(); z.Bite();` then `Assert.Equal(int, z.Health);` |
+| `TheStackOverflow_RecursivelySumsDownToZero` | `Assert.Equal(int, result)` — trace the recursion by hand, one call at a time |
+| `TryCatchThatWasnt_CatchesAndCleansUp` | `Assert.Equal("...", result)` — exact string built across the catch and finally blocks |
+| `TheNullReference_FallsBackToDefaultGreeting` | `Assert.Equal("...", result)` |
+| `TheSwitchStatementIncident_MatchesTheSeverityArm` | `Assert.Equal("...", result)` |
+| `TheStringFormatGlitch_RoundsToTwoDecimalPlaces` | `Assert.Equal("...", result)` — remember `:F2` rounds, it doesn't truncate |
 
 `int` / `"..."` above are placeholders — swap in the actual number or string you calculate for that incident.
 

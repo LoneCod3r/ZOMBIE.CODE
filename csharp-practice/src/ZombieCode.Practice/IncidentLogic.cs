@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace ZombieCode.Practice;
 
 /// <summary>
@@ -121,5 +123,108 @@ public static class IncidentLogic
         List<int> scores = new List<int> { 1, 2, 3, 4, 5 };
         int total = scores.Where(s => s % 2 == 0).Sum();
         return total;
+    }
+
+    // ── Bonus incidents — not in the live quiz, extra practice ──────────
+
+    // INCIDENT #11 — THE STACK OVERFLOW
+    // Original snippet:
+    //   int Sum(int n) {
+    //       if (n == 0) return 0;
+    //       return n + Sum(n - 1);
+    //   }
+    //   Console.WriteLine(Sum(4));
+    public static int TheStackOverflow()
+    {
+        return Sum(4);
+    }
+
+    private static int Sum(int n)
+    {
+        if (n == 0) return 0;
+        return n + Sum(n - 1);
+    }
+
+    // INCIDENT #12 — THE TRY-CATCH THAT WASN'T
+    // Original snippet:
+    //   string log = "";
+    //   try {
+    //       int[] arr = new int[3];
+    //       log += arr[5];
+    //   } catch (IndexOutOfRangeException) {
+    //       log += "Caught";
+    //   } finally {
+    //       log += "-Cleanup";
+    //   }
+    //   Console.WriteLine(log);
+    public static string TryCatchThatWasnt()
+    {
+        string log = "";
+        try
+        {
+            int[] arr = new int[3];
+            log += arr[5];
+        }
+        catch (IndexOutOfRangeException)
+        {
+            log += "Caught";
+        }
+        finally
+        {
+            log += "-Cleanup";
+        }
+        return log;
+    }
+
+    // INCIDENT #13 — THE NULL REFERENCE
+    // Original snippet:
+    //   string? name = null;
+    //   string greeting = name ?? "Unknown Dev";
+    //   Console.WriteLine(greeting);
+    public static string TheNullReference()
+    {
+        string? name = null;
+        string greeting = name ?? "Unknown Dev";
+        return greeting;
+    }
+
+    // INCIDENT #14 — THE SWITCH STATEMENT INCIDENT
+    // Original snippet:
+    //   int severity = 2;
+    //   string label = severity switch
+    //   {
+    //       1 => "Low",
+    //       2 => "Medium",
+    //       3 => "High",
+    //       _ => "Unknown"
+    //   };
+    //   Console.WriteLine(label);
+    public static string TheSwitchStatementIncident()
+    {
+        int severity = 2;
+        string label = severity switch
+        {
+            1 => "Low",
+            2 => "Medium",
+            3 => "High",
+            _ => "Unknown",
+        };
+        return label;
+    }
+
+    // INCIDENT #15 — THE STRING FORMAT GLITCH
+    // Original snippet:
+    //   double uptime = 12.3456;
+    //   string report = $"Uptime: {uptime:F2}%";
+    //   Console.WriteLine(report);
+    // NOTE: ":F2" formats using the CURRENT CULTURE's decimal separator by
+    // default (a comma on some machines, a period on others). InvariantCulture
+    // is used here so the result is always "12.35" regardless of what machine
+    // or CI runner this executes on.
+    public static string TheStringFormatGlitch()
+    {
+        double uptime = 12.3456;
+        string report = string.Format(CultureInfo.InvariantCulture, "Uptime: {0:F2}%", uptime);
+        return report;
     }
 }

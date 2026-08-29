@@ -132,4 +132,77 @@ public class IncidentLogicTests
         // Assert
         Assert.Equal(6, result);
     }
+
+    // ── Bonus incidents — not in the live quiz, extra practice ──────────
+
+    // INCIDENT #11 — THE STACK OVERFLOW
+    // Sum(n) recursively adds n + Sum(n - 1) down to 0. What does Sum(4) return?
+    [Fact]
+    public void TheStackOverflow_RecursivelySumsDownToZero()
+    {
+        // Arrange
+
+        // Act
+        var result = IncidentLogic.TheStackOverflow();
+
+        // Assert
+        Assert.Equal(10, result);
+    }
+
+    // INCIDENT #12 — THE TRY-CATCH THAT WASN'T
+    // Indexing arr[5] on a 3-element array throws — what ends up in `log` once
+    // the catch and finally blocks both run?
+    [Fact]
+    public void TryCatchThatWasnt_CatchesAndCleansUp()
+    {
+        // Arrange
+
+        // Act
+        var result = IncidentLogic.TryCatchThatWasnt();
+
+        // Assert
+        Assert.Equal("Caught-Cleanup", result);
+    }
+
+    // INCIDENT #13 — THE NULL REFERENCE
+    // name is null — what does the ?? operator fall back to?
+    [Fact]
+    public void TheNullReference_FallsBackToDefaultGreeting()
+    {
+        // Arrange
+
+        // Act
+        var result = IncidentLogic.TheNullReference();
+
+        // Assert
+        Assert.Equal("Unknown Dev", result);
+    }
+
+    // INCIDENT #14 — THE SWITCH STATEMENT INCIDENT
+    // severity is 2 — which switch expression arm matches?
+    [Fact]
+    public void TheSwitchStatementIncident_MatchesTheSeverityArm()
+    {
+        // Arrange
+
+        // Act
+        var result = IncidentLogic.TheSwitchStatementIncident();
+
+        // Assert
+        Assert.Equal("Medium", result);
+    }
+
+    // INCIDENT #15 — THE STRING FORMAT GLITCH
+    // uptime is 12.3456 formatted with :F2 — how does it round, and what's the full string?
+    [Fact]
+    public void TheStringFormatGlitch_RoundsToTwoDecimalPlaces()
+    {
+        // Arrange
+
+        // Act
+        var result = IncidentLogic.TheStringFormatGlitch();
+
+        // Assert
+        Assert.Equal("Uptime: 12.35%", result);
+    }
 }
