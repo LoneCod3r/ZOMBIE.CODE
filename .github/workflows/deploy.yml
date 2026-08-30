@@ -64,3 +64,26 @@ jobs:
           projectId: zombie-code-5185e
           target: app
           channelId: live
+
+  health-check:
+    needs: [deploy-github-pages, deploy-firebase]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm both live URLs return 200
+        run: |
+          check() {
+            url="$1"
+            for i in 1 2 3 4 5; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+              if [ "$code" = "200" ]; then
+                echo "OK: $url -> $code"
+                return 0
+              fi
+              echo "Attempt $i: $url -> $code, retrying in 10s..."
+              sleep 10
+            done
+            echo "::error::$url did not return 200 after 5 attempts"
+            return 1
+          }
+          check "https://lonecod3r.github.io/ZOMBIE.CODE/"
+          check "https://zombiecode.web.app/"

@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The bundled npm on the runner is stricter about lockfile completeness
+      # for optional platform packages than the npm this lockfile was
+      # generated with, and rejects it as "out of sync" even though it isn't.
+      - run: npm install -g npm@11
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test
+      - run: npm run build
+
+  csharp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: csharp-practice
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+      - run: dotnet build
+      - run: dotnet test
