@@ -88,7 +88,12 @@ function createInitialState(): GameState {
   };
 }
 
+function createBootState(): GameState {
+  return { ...createInitialState(), gameStatus: "boot" };
+}
+
 export type GameAction =
+  | { type: "CONTINUE_BOOT" }
   | { type: "GO_TO_HOWTO" }
   | { type: "GO_TO_ACHIEVEMENTS" }
   | { type: "GO_TO_HIGHSCORES" }
@@ -121,6 +126,10 @@ function withUnlockedAchievements(state: GameState, newIds: string[]): GameState
 
 function reducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
+    case "CONTINUE_BOOT":
+      if (state.gameStatus !== "boot") return state;
+      return { ...state, gameStatus: "menu" };
+
     case "GO_TO_HOWTO":
       return { ...state, gameStatus: "howto" };
 
@@ -278,9 +287,10 @@ function reducer(state: GameState, action: GameAction): GameState {
 }
 
 export function useGameState() {
-  const [state, dispatch] = useReducer(reducer, undefined, createInitialState);
+  const [state, dispatch] = useReducer(reducer, undefined, createBootState);
 
   const actions = {
+    continueBoot: useCallback(() => dispatch({ type: "CONTINUE_BOOT" }), []),
     goToHowTo: useCallback(() => dispatch({ type: "GO_TO_HOWTO" }), []),
     goToAchievements: useCallback(() => dispatch({ type: "GO_TO_ACHIEVEMENTS" }), []),
     goToHighScores: useCallback(() => dispatch({ type: "GO_TO_HIGHSCORES" }), []),

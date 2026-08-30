@@ -147,6 +147,59 @@ button {
 }
 
 /* ── Main menu ──────────────────────────────────────── */
+/* ── Boot screen ─────────────────────────────────────── */
+.boot-screen {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: min(20vh, 8rem);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.boot-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 640px;
+  width: 100%;
+}
+
+.boot-line {
+  margin: 0;
+  color: var(--c-terminal-green);
+  text-shadow: 0 0 6px rgba(183, 213, 138, 0.4);
+  animation: boot-line-in 0.15s ease-out;
+}
+
+@keyframes boot-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.boot-prompt {
+  margin: 1.5rem 0 0;
+  color: var(--c-off-white);
+  letter-spacing: 0.1em;
+  animation: boot-prompt-blink 1s linear infinite;
+}
+
+@keyframes boot-prompt-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
 .main-menu {
   justify-content: center;
 }
@@ -180,6 +233,20 @@ button {
 
 .title-dot {
   color: var(--c-warning-red);
+  animation: title-dot-blink 1.1s linear infinite;
+}
+
+@keyframes title-dot-blink {
+  0%,
+  49% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--c-warning-red), 0 0 22px rgba(143, 45, 36, 0.9);
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+    text-shadow: none;
+  }
 }
 
 .game-subtitle {
@@ -1344,7 +1411,10 @@ button {
   .boss-portrait,
   .zombie-portrait.stage-3,
   .hud-timer-warning .hud-timer-fill,
-  .hud-timer-warning .hud-timer-value {
+  .hud-timer-warning .hud-timer-value,
+  .title-dot,
+  .boot-prompt,
+  .boot-line {
     animation: none !important;
   }
   .glitching {

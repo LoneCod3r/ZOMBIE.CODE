@@ -2,6 +2,7 @@ import { useGameState } from "./game/gameState";
 import { loadHighScores } from "./game/storage";
 import { STORY_TRANSITIONS } from "./story/transitions";
 import CRTOverlay from "./components/CRTOverlay";
+import BootScreen from "./components/BootScreen";
 import MainMenu from "./components/MainMenu";
 import HowToPlay from "./components/HowToPlay";
 import AchievementsScreen from "./components/AchievementsScreen";
@@ -21,6 +22,9 @@ export default function App() {
 
   const renderScreen = () => {
     switch (state.gameStatus) {
+      case "boot":
+        return <BootScreen onContinue={actions.continueBoot} />;
+
       case "menu":
         return (
           <MainMenu

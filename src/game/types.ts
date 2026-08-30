@@ -20,6 +20,7 @@ export interface Question {
 }
 
 export type GameStatus =
+  | "boot"
   | "menu"
   | "howto"
   | "achievements"
