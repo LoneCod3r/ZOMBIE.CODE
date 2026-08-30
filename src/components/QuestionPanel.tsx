@@ -1,5 +1,4 @@
 import type { Question } from "../game/types";
-import { calculateScore } from "../game/scoring";
 import AnswerButton from "./AnswerButton";
 
 const LANGUAGE_LABEL: Record<Question["language"], string> = {
@@ -13,8 +12,6 @@ interface QuestionPanelProps {
   incidentNumber: number;
   selectedAnswer: number | null;
   answerSubmitted: boolean;
-  lastAnswerCorrect: boolean | null;
-  timeLeft: number;
   onSelect: (index: number) => void;
   onHover: () => void;
 }
@@ -24,14 +21,9 @@ export default function QuestionPanel({
   incidentNumber,
   selectedAnswer,
   answerSubmitted,
-  lastAnswerCorrect,
-  timeLeft,
   onSelect,
   onHover,
 }: QuestionPanelProps) {
-  const timedOut = answerSubmitted && lastAnswerCorrect === false && selectedAnswer === null;
-  const pointsAwarded = lastAnswerCorrect ? calculateScore(question.difficulty, true, timeLeft) : 0;
-
   const revealStateFor = (index: number): "idle" | "correct" | "incorrect" | "muted" => {
     if (!answerSubmitted) return "idle";
     if (index === question.correctAnswer) return "correct";
@@ -74,30 +66,6 @@ export default function QuestionPanel({
           />
         ))}
       </div>
-
-      {answerSubmitted ? (
-        <div className={`feedback-panel ${lastAnswerCorrect ? "feedback-correct" : "feedback-incorrect"}`}>
-          {timedOut ? (
-            <>
-              <div className="feedback-title">TIME EXPIRED</div>
-              <div className="feedback-subtitle">THE BUG WON.</div>
-            </>
-          ) : lastAnswerCorrect ? (
-            <>
-              <div className="feedback-title">CORRECT</div>
-              <div className="feedback-stats">
-                +{pointsAwarded} XP &nbsp;·&nbsp; +{question.zombieGain} ZOMBIFICATION
-              </div>
-            </>
-          ) : (
-            <div className="feedback-title">INCORRECT</div>
-          )}
-          <div className="feedback-answer">
-            THE CORRECT ANSWER: [{question.correctAnswer + 1}] {question.answers[question.correctAnswer]}
-          </div>
-          <div className="feedback-why">WHY: {question.explanation}</div>
-        </div>
-      ) : null}
     </div>
   );
 }

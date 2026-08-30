@@ -10,6 +10,7 @@ import QuestionPanel from "./QuestionPanel";
 import ZombieCharacter from "./ZombieCharacter";
 import ZombieMeter from "./ZombieMeter";
 import SidebarStats from "./SidebarStats";
+import AnswerFeedback from "./AnswerFeedback";
 import GlitchEffect from "./GlitchEffect";
 import PauseMenu from "./PauseMenu";
 
@@ -155,8 +156,6 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
             incidentNumber={state.currentQuestionIndex + 1}
             selectedAnswer={state.selectedAnswer}
             answerSubmitted={state.answerSubmitted}
-            lastAnswerCorrect={state.lastAnswerCorrect}
-            timeLeft={state.timeLeft}
             onSelect={handleAnswerClick}
             onHover={playHover}
           />
@@ -169,6 +168,13 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
             correctAnswers={state.correctAnswers}
             answered={state.correctAnswers + state.wrongAnswers}
             zombieStage={stage}
+          />
+          <AnswerFeedback
+            question={question}
+            selectedAnswer={state.selectedAnswer}
+            answerSubmitted={state.answerSubmitted}
+            lastAnswerCorrect={state.lastAnswerCorrect}
+            timeLeft={state.timeLeft}
           />
         </aside>
       </div>
