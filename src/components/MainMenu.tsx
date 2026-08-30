@@ -24,10 +24,10 @@ export default function MainMenu({ onStart, onHowToPlay, onAchievements, onHighS
 
         <nav className="menu-buttons">
           <button type="button" className="menu-button" onMouseEnter={playHover} onClick={click(onStart)}>
-            [ START SHIFT ]
+            START SHIFT
           </button>
           <button type="button" className="menu-button" onMouseEnter={playHover} onClick={click(onHighScores)}>
-            [ HIGH SCORES ]
+            HIGH SCORES
           </button>
           <button
             type="button"
@@ -35,10 +35,10 @@ export default function MainMenu({ onStart, onHowToPlay, onAchievements, onHighS
             onMouseEnter={playHover}
             onClick={click(onHowToPlay)}
           >
-            [ HOW TO PLAY ]
+            HOW TO PLAY
           </button>
           <button type="button" className="menu-button" onMouseEnter={playHover} onClick={click(onAchievements)}>
-            [ ACHIEVEMENTS ]
+            ACHIEVEMENTS
           </button>
         </nav>
 
