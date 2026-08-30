@@ -14,7 +14,7 @@ export default function StoryTransition({ beat, onContinue }: StoryTransitionPro
 
   return (
     <div className="screen story-transition">
-      <div className="story-heading">{beat.heading}</div>
+      <h1 className="story-heading">{beat.heading}</h1>
       <div className="story-lines">
         {beat.lines.map((line, i) => (
           <p key={i}>{line}</p>

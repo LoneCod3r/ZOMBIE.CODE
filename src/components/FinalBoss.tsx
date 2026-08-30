@@ -21,7 +21,7 @@ export default function FinalBoss({ correctAnswers, totalQuestions, gender, stag
   return (
     <div className="screen final-boss">
       <div className="boss-header">FINAL INCIDENT</div>
-      <div className="boss-title">PRODUCTION</div>
+      <h1 className="boss-title">PRODUCTION</h1>
       <div className="boss-portrait">
         <img
           src={characterImageSrc(gender, stage)}

@@ -43,7 +43,7 @@ export default function ResultsScreen({ state, onPlayAgain, onMainMenu }: Result
     <div className="screen results-screen">
       <div className="results-frame">
         <div className="results-title">========================</div>
-        <div className="results-title results-title-main">SHIFT COMPLETE</div>
+        <h1 className="results-title results-title-main">SHIFT COMPLETE</h1>
         <div className="results-title">========================</div>
 
         <div className="results-player-name">{state.playerName}</div>

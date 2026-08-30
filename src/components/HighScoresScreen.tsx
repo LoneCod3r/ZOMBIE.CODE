@@ -11,7 +11,7 @@ export default function HighScoresScreen({ onBack, highScores }: HighScoresScree
     <div className="screen highscores-screen">
       <div className="terminal-frame highscores-frame">
         <div className="terminal-titlebar">
-          <span>HIGH SCORES</span>
+          <h1>HIGH SCORES</h1>
         </div>
 
         {highScores.length > 0 ? (

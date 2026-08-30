@@ -10,7 +10,7 @@ export default function HowToPlay({ onBack, onStart }: HowToPlayProps) {
     <div className="screen how-to-play">
       <div className="terminal-frame howto-frame">
         <div className="terminal-titlebar">
-          <span>HOW TO PLAY</span>
+          <h1>HOW TO PLAY</h1>
         </div>
         <p>WELCOME, DEVELOPER.</p>
         <p>There are 30 incidents.</p>

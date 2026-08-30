@@ -7,7 +7,7 @@ export default function PauseMenu({ onResume, onMainMenu }: PauseMenuProps) {
   return (
     <div className="pause-overlay">
       <div className="pause-frame">
-        <div className="pause-title">PAUSED</div>
+        <h2 className="pause-title">PAUSED</h2>
         <p className="pause-subtitle">PRODUCTION IS STILL WATCHING.</p>
         <div className="menu-buttons">
           <button type="button" className="menu-button" onClick={onResume}>

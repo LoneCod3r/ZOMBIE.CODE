@@ -85,7 +85,7 @@ export default function App() {
         THIS WORKSTATION REQUIRES A LARGER MONITOR.
       </div>
       <div className="app-frame">
-        {renderScreen()}
+        <main>{renderScreen()}</main>
         <SoundToggle />
         {pendingAchievementId ? (
           <AchievementPopup achievementId={pendingAchievementId} onDismiss={actions.dismissAchievement} />

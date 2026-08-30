@@ -24,7 +24,7 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
       <div className="terminal-titlebar character-select-titlebar">
         <span>NEW HIRE ONBOARDING</span>
       </div>
-      <h2 className="character-select-title">CHOOSE YOUR DEVELOPER</h2>
+      <h1 className="character-select-title">CHOOSE YOUR DEVELOPER</h1>
 
       <label className="character-name-field">
         <span>ENTER YOUR NAME:</span>

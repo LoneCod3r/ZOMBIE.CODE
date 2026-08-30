@@ -16,6 +16,12 @@
   box-sizing: border-box;
 }
 
+h1,
+h2 {
+  margin: 0;
+  font: inherit;
+}
+
 html,
 body,
 #root {
@@ -49,6 +55,12 @@ button {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+/* Semantic <main> landmark without affecting layout - its child (.screen)
+   keeps behaving exactly as if main weren't there. */
+.app-frame > main {
+  display: contents;
 }
 
 .small-screen-warning {

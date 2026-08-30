@@ -43,7 +43,7 @@ export default function QuestionPanel({
     <div className="question-panel">
       <div className="terminal-frame">
         <div className="terminal-titlebar">
-          <span>INCIDENT #{String(incidentNumber).padStart(2, "0")}</span>
+          <h1>INCIDENT #{String(incidentNumber).padStart(2, "0")}</h1>
           <span className={`terminal-lang lang-${question.language}`}>
             {LANGUAGE_LABEL[question.language]}
           </span>

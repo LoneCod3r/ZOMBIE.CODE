@@ -16,7 +16,7 @@ export default function AchievementsScreen({ onBack, highScores }: AchievementsS
     <div className="screen achievements-screen">
       <div className="terminal-frame achievements-frame">
         <div className="terminal-titlebar">
-          <span>ACHIEVEMENTS</span>
+          <h1>ACHIEVEMENTS</h1>
         </div>
 
         {topScore ? (
