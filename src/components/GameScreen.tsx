@@ -9,6 +9,7 @@ import GameHUD from "./GameHUD";
 import QuestionPanel from "./QuestionPanel";
 import ZombieCharacter from "./ZombieCharacter";
 import ZombieMeter from "./ZombieMeter";
+import SidebarStats from "./SidebarStats";
 import GlitchEffect from "./GlitchEffect";
 import PauseMenu from "./PauseMenu";
 
@@ -164,6 +165,11 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
         <aside className="game-sidebar">
           <ZombieCharacter gender={state.characterGender ?? "male"} stage={state.characterStage} />
           <ZombieMeter zombieLevel={state.zombieLevel} label="INFECTION LEVEL" />
+          <SidebarStats
+            correctAnswers={state.correctAnswers}
+            answered={state.correctAnswers + state.wrongAnswers}
+            zombieStage={stage}
+          />
         </aside>
       </div>
 
