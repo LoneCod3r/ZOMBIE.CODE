@@ -91,7 +91,9 @@ button {
 
 @media (max-width: 640px) {
   .screen {
-    padding: 1rem;
+    /* Extra top clearance so content doesn't start flush under the
+       fixed-position sound toggle in the corner. */
+    padding: 3rem 1rem 1rem;
     gap: 1rem;
     justify-content: flex-start;
   }
