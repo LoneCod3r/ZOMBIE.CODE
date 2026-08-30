@@ -2,10 +2,12 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// GitHub Pages serves this as a project site at /ZOMBIE.CODE/, not the domain
-// root, so every root-relative asset path (manifest, icons, service worker
-// scope) has to be prefixed with this base or they'll 404 once deployed.
-const BASE_PATH = "/ZOMBIE.CODE/";
+// This same build is deployed to two different roots: GitHub Pages serves it
+// as a project site at /ZOMBIE.CODE/, while Firebase Hosting serves it at the
+// domain root. A relative base makes every asset path (bundle, manifest,
+// icons, service worker scope) resolve correctly under either, without
+// needing a separate build per host.
+const BASE_PATH = "./";
 
 export default defineConfig({
   base: BASE_PATH,
