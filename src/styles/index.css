@@ -623,6 +623,7 @@ button {
 .incident-log {
   width: 100%;
   max-width: 1000px;
+  margin-top: 3rem;
   border: 1px solid var(--c-dirty-gray);
   background: rgba(8, 9, 9, 0.6);
   padding: 0.75rem 1rem;
