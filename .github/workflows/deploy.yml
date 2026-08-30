@@ -23,6 +23,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # The bundled npm on the runner is stricter about lockfile completeness
+      # for optional platform packages than the npm this lockfile was
+      # generated with, and rejects it as "out of sync" even though it isn't.
+      - run: npm install -g npm@11
       - run: npm ci
       - run: npm test
       - run: npm run build
