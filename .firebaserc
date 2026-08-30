@@ -2,6 +2,14 @@
   "projects": {
     "default": "zombie-code-5185e"
   },
-  "targets": {},
+  "targets": {
+    "zombie-code-5185e": {
+      "hosting": {
+        "app": [
+          "zombiecode"
+        ]
+      }
+    }
+  },
   "etags": {}
 }
