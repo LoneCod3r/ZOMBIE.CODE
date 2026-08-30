@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import type { CharacterStage, Gender } from "../game/types";
 import { playBoss } from "../game/audio";
+import { characterImageSrc } from "../game/assets";
 
 interface FinalBossProps {
   correctAnswers: number;
@@ -23,7 +24,7 @@ export default function FinalBoss({ correctAnswers, totalQuestions, gender, stag
       <div className="boss-title">PRODUCTION</div>
       <div className="boss-portrait">
         <img
-          src={`/characters/${gender}-${stage}.png`}
+          src={characterImageSrc(gender, stage)}
           alt={`${gender === "male" ? "Male" : "Female"} developer, final state`}
         />
       </div>

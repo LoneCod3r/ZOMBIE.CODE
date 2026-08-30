@@ -2,7 +2,13 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
+// GitHub Pages serves this as a project site at /ZOMBIE.CODE/, not the domain
+// root, so every root-relative asset path (manifest, icons, service worker
+// scope) has to be prefixed with this base or they'll 404 once deployed.
+const BASE_PATH = "/ZOMBIE.CODE/";
+
 export default defineConfig({
+  base: BASE_PATH,
   plugins: [
     react(),
     VitePWA({
@@ -21,13 +27,13 @@ export default defineConfig({
         background_color: "#080909",
         display: "standalone",
         orientation: "landscape",
-        start_url: "/",
-        scope: "/",
+        start_url: BASE_PATH,
+        scope: BASE_PATH,
         icons: [
-          { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-          { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+          { src: `${BASE_PATH}icons/icon-192.png`, sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: `${BASE_PATH}icons/icon-512.png`, sizes: "512x512", type: "image/png", purpose: "any" },
           {
-            src: "/icons/icon-maskable-512.png",
+            src: `${BASE_PATH}icons/icon-maskable-512.png`,
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",

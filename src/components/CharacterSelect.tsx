@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Gender } from "../game/types";
 import { playClick, playHover } from "../game/audio";
+import { characterImageSrc } from "../game/assets";
 
 interface CharacterSelectProps {
   onSelect: (gender: Gender, playerName: string) => void;
@@ -49,7 +50,7 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
           disabled={!isNameValid}
           aria-disabled={!isNameValid}
         >
-          <img src="/characters/male-1.png" alt="Male developer" />
+          <img src={characterImageSrc("male", 1)} alt="Male developer" />
           <span>[ MALE ]</span>
         </button>
 
@@ -61,7 +62,7 @@ export default function CharacterSelect({ onSelect }: CharacterSelectProps) {
           disabled={!isNameValid}
           aria-disabled={!isNameValid}
         >
-          <img src="/characters/female-1.png" alt="Female developer" />
+          <img src={characterImageSrc("female", 1)} alt="Female developer" />
           <span>[ FEMALE ]</span>
         </button>
       </div>
