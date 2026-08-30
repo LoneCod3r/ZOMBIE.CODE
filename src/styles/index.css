@@ -150,15 +150,17 @@ button {
 /* ── Boot screen ─────────────────────────────────────── */
 .boot-screen {
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   padding-top: min(20vh, 8rem);
   font-size: 0.95rem;
   cursor: pointer;
+  text-align: center;
 }
 
 .boot-log {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   max-width: 640px;
   width: 100%;
