@@ -151,7 +151,7 @@ button {
 .boot-screen {
   justify-content: flex-start;
   align-items: center;
-  padding-top: min(20vh, 8rem);
+  padding-top: calc(min(20vh, 8rem) + 3rem);
   font-size: 0.95rem;
   cursor: pointer;
   text-align: center;
