@@ -3,6 +3,7 @@
 Manual QA test suite for practicing test execution against the running game.
 
 **Setup:** `npm install && npm run dev`, open the printed local URL in a browser.
+**Browser scope:** all test cases below have been executed against **Chromium-based browsers** only (Chrome, Edge, and Chromium via Playwright). Firefox and Safari/WebKit have not been tested — treat results as unverified on those engines until run.
 **Status legend:** fill in `Pass` / `Fail` / `Blocked` after each run, plus any notes in Actual Result.
 
 ---

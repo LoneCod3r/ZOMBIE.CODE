@@ -38,6 +38,10 @@ npm test
 
 React + TypeScript + Vite, no backend, no accounts — everything (high scores, achievements, sound preference) is stored locally in the browser.
 
+## Browser support
+
+Built and tested against **Chromium-based browsers** (Chrome, Edge, Brave, etc.). It hasn't been verified on Firefox or Safari/WebKit.
+
 ## Also in this repo
 
 - `TEST_CASES.md` — manual QA test case checklist for the game
