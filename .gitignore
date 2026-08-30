@@ -3,6 +3,7 @@ dist
 dist-ssr
 dev-dist
 .vite/
+.firebase/
 *.local
 .DS_Store
 *.tsbuildinfo
