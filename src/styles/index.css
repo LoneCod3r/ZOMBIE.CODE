@@ -731,8 +731,14 @@ button {
   padding: 0.75rem;
   overflow-x: auto;
   font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--c-terminal-green);
   white-space: pre;
+  /* Snippets range from 2 to 11 lines across the question bank (the longest,
+     "THE MERGE CONFLICT", needs ~15.6rem). Without a floor matching the
+     longest one, the whole layout (answers, sidebar, incident log) shifts
+     up and down between questions depending on how long the code is. */
+  min-height: 16rem;
 }
 
 .answer-grid {
