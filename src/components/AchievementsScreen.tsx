@@ -56,7 +56,7 @@ export default function AchievementsScreen({ onBack, highScores }: AchievementsS
             onBack();
           }}
         >
-          [ BACK ]
+          BACK
         </button>
       </div>
     </div>

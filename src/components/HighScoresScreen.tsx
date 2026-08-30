@@ -45,7 +45,7 @@ export default function HighScoresScreen({ onBack, highScores }: HighScoresScree
             onBack();
           }}
         >
-          [ BACK ]
+          BACK
         </button>
       </div>
     </div>

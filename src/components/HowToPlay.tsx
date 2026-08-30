@@ -37,7 +37,7 @@ export default function HowToPlay({ onBack, onStart }: HowToPlayProps) {
             onStart();
           }}
         >
-          [ START SHIFT ]
+          START SHIFT
         </button>
         <button
           type="button"
@@ -47,7 +47,7 @@ export default function HowToPlay({ onBack, onStart }: HowToPlayProps) {
             onBack();
           }}
         >
-          [ BACK ]
+          BACK
         </button>
       </div>
     </div>
