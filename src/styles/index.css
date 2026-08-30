@@ -116,7 +116,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .menu-button {
@@ -129,6 +129,7 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-align: center;
   transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
