@@ -11,6 +11,7 @@ import ZombieCharacter from "./ZombieCharacter";
 import ZombieMeter from "./ZombieMeter";
 import GlitchEffect from "./GlitchEffect";
 import PauseMenu from "./PauseMenu";
+import IncidentLog from "./IncidentLog";
 
 interface GameScreenProps {
   state: GameState;
@@ -166,6 +167,12 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
           <ZombieMeter zombieLevel={state.zombieLevel} label="INFECTION LEVEL" />
         </aside>
       </div>
+
+      <IncidentLog
+        history={state.history}
+        totalIncidents={state.runQuestions.length}
+        currentIndex={state.currentQuestionIndex}
+      />
 
       {isPaused ? <PauseMenu onResume={actions.togglePause} onMainMenu={actions.goToMenu} /> : null}
     </div>
