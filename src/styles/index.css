@@ -40,6 +40,7 @@ body {
 
 button {
   font-family: inherit;
+  touch-action: manipulation;
 }
 
 .app-root {
@@ -671,6 +672,16 @@ button {
      longest one, the whole layout (answers, sidebar, incident log) shifts
      up and down between questions depending on how long the code is. */
   min-height: 16rem;
+}
+
+@media (max-width: 640px) {
+  /* Long code lines don't fit the narrow viewport at the desktop font
+     size; wrap them instead of letting them run past the frame edge. */
+  .terminal-code {
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 }
 
 .answer-grid {
