@@ -34,6 +34,7 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
   const prevCharacterStageRef = useRef(state.characterStage);
   const prevQuestionIdRef = useRef<number | null>(null);
   const warnedRef = useRef(false);
+  const inputLockedUntilRef = useRef(0);
 
   const isPlaying = state.gameStatus === "playing";
   const isPaused = state.gameStatus === "paused";
@@ -64,6 +65,11 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
       triggerGlitch(300);
     }
     prevQuestionIdRef.current = question.id;
+    // Some mobile browsers fire a delayed "ghost" click after a touch that
+    // triggered a screen transition (e.g. tapping a character-select
+    // button); without this guard it lands on whichever answer button is
+    // now under that same screen position and instantly submits it.
+    inputLockedUntilRef.current = Date.now() + 400;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question?.id]);
 
@@ -130,6 +136,7 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
 
   const handleAnswerClick = (index: number) => {
     if (state.answerSubmitted) return;
+    if (Date.now() < inputLockedUntilRef.current) return;
     actions.selectAnswer(index);
     actions.submitAnswer();
   };
