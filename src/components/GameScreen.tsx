@@ -34,10 +34,30 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
   const prevCharacterStageRef = useRef(state.characterStage);
   const prevQuestionIdRef = useRef<number | null>(null);
   const warnedRef = useRef(false);
-  const inputLockedUntilRef = useRef(0);
+  // The answer grid sits in the exact same screen position every question.
+  // A finger resting on the screen (or an impatient tap during the disabled
+  // feedback/auto-advance wait) can register as a "click" on the next
+  // question's answer button the instant it becomes interactive, with no
+  // deliberate tap after that question was actually visible. Guard against
+  // it by only honoring a click if it was preceded by a fresh touch/pointer
+  // contact that started after the current question mounted - a stale or
+  // held-over contact from before won't have one.
+  const freshContactRef = useRef(false);
 
   const isPlaying = state.gameStatus === "playing";
   const isPaused = state.gameStatus === "paused";
+
+  useEffect(() => {
+    const markFreshContact = () => {
+      freshContactRef.current = true;
+    };
+    window.addEventListener("pointerdown", markFreshContact, { passive: true });
+    window.addEventListener("touchstart", markFreshContact, { passive: true });
+    return () => {
+      window.removeEventListener("pointerdown", markFreshContact);
+      window.removeEventListener("touchstart", markFreshContact);
+    };
+  }, []);
 
   // Timer tick.
   useEffect(() => {
@@ -65,11 +85,7 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
       triggerGlitch(300);
     }
     prevQuestionIdRef.current = question.id;
-    // Some mobile browsers fire a delayed "ghost" click after a touch that
-    // triggered a screen transition (e.g. tapping a character-select
-    // button); without this guard it lands on whichever answer button is
-    // now under that same screen position and instantly submits it.
-    inputLockedUntilRef.current = Date.now() + 400;
+    freshContactRef.current = false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question?.id]);
 
@@ -136,7 +152,7 @@ export default function GameScreen({ state, actions }: GameScreenProps) {
 
   const handleAnswerClick = (index: number) => {
     if (state.answerSubmitted) return;
-    if (Date.now() < inputLockedUntilRef.current) return;
+    if (!freshContactRef.current) return;
     actions.selectAnswer(index);
     actions.submitAnswer();
   };
