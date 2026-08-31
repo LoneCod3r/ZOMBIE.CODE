@@ -55,7 +55,7 @@ export default function QuestionPanel({
       <div className="answer-grid">
         {question.answers.map((answer, index) => (
           <AnswerButton
-            key={index}
+            key={`${question.id}-${index}`}
             index={index}
             text={answer}
             selected={selectedAnswer === index}

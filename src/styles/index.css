@@ -723,11 +723,21 @@ button {
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.answer-button:hover:not(:disabled),
 .answer-button:focus-visible {
   border-color: var(--c-crt-green);
   background: rgba(143, 174, 117, 0.1);
   outline: none;
+}
+
+/* Touchscreens report no real hover capability; scoping :hover behind this
+   query keeps a tapped button from getting stuck looking "hovered" once the
+   finger lifts, since there's no touch equivalent of a mouse leaving. */
+@media (hover: hover) {
+  .answer-button:hover:not(:disabled) {
+    border-color: var(--c-crt-green);
+    background: rgba(143, 174, 117, 0.1);
+    outline: none;
+  }
 }
 
 .answer-selected {
